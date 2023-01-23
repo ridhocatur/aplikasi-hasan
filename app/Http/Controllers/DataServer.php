@@ -54,8 +54,47 @@ class DataServer extends Controller
             'tahun'         => $request->tahun,
             'penggunaan'    => $request->penggunaan
         ]);
-        
+
         //redirect to index
         return redirect()->route('data-server.index')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    public function show(PerangkatJar_m $perangkatJar_m)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(PerangkatJar_m $perangkatJar_m)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, PerangkatJar_m $perangkatJar_m)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(PerangkatJar_m $perangkatJar_m)
+    {
+        //
     }
 }

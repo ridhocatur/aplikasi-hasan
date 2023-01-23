@@ -33,22 +33,22 @@
             <span>Data Server</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="data-perangkat-jaringan">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Data Perangkat Jaringan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="data-access-point">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Data Access Point</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="data-nvr-cctv">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Data NVR CCTV</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="data-cctv-pemko">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Data CCTV Pemko</span></a>
     </li>

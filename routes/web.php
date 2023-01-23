@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataServer;
+use App\Http\Controllers\PerangkatJar;
+use App\Http\Controllers\NvrCctv;
+use App\Http\Controllers\CctvPemko;
+use App\Http\Controllers\AccessPoint;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +28,7 @@ Route::get('/dashboard', function () {
 
 //route resource
 Route::resource('/data-server', DataServer::class);
+Route::resource('/data-perangkat-jaringan', PerangkatJar::class);
+Route::resource('/data-nvr-cctv', NvrCctv::class);
+Route::resource('/data-cctv-pemko', CctvPemko::class);
+Route::resource('/data-access-point', AccessPoint::class);
