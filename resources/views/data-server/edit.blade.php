@@ -1,54 +1,54 @@
 <!-- Modal -->
-<div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="tambahModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tambahModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="editModalLabel">Edit Data</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('data-server.store') }}" method="POST">
+                <form action="{{ route('Ubah') }}" method="POST">
                     @csrf
-                    {{-- <input type="hidden" name="id" id="id"> --}}
+                    <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="merkserver">Merk Server</label>
-                        <input type="text" class="form-control" name="merkserver" aria-describedby="merkServer" required>
+                        <input type="text" class="form-control" name="merkserver" aria-describedby="merkServer" id="merkserver" required>
                     </div>
                     <div class="form-group">
                         <label for="jenis">Jenis Server</label>
-                        <input type="text" class="form-control" name="jenis" aria-describedby="jenisServer" required>
+                        <input type="text" class="form-control" name="jenis" aria-describedby="jenisServer" id="jenis" required>
                     </div>
 
                     <div class="form-group">
                         <label for="processor">Processor</label>
-                        <input type="text" class="form-control" name="processor" aria-describedby="processorServer" required>
+                        <input type="text" class="form-control" name="processor" aria-describedby="processorServer" id="processor" required>
                     </div>
 
                     <div class="form-group">
                         <label for="ram">RAM</label>
-                        <input type="text" class="form-control" name="ram" aria-describedby="ramServer" required>
+                        <input type="text" class="form-control" name="ram" aria-describedby="ramServer" id="ram" required>
                     </div>
 
                     <div class="form-group">
                         <label for="hardisk">Hardisk</label>
-                        <input type="text" class="form-control" name="hardisk" aria-describedby="hardiskServer" required>
+                        <input type="text" class="form-control" name="hardisk" aria-describedby="hardiskServer" id="hardisk" required>
                     </div>
 
                     <div class="form-group">
                         <label for="os">OS</label>
-                        <input type="text" class="form-control" name="os" aria-describedby="osServer" required>
+                        <input type="text" class="form-control" name="os" aria-describedby="osServer" id="os" required>
                     </div>
 
                     <div class="form-group">
                         <label for="tahun">Tahun</label>
-                        <input type="text" class="form-control" name="tahun" aria-describedby="tahunServer" required>
+                        <input type="text" class="form-control" name="tahun" aria-describedby="tahunServer" id="tahun" required>
                     </div>
 
                     <div class="form-group">
                         <label for="penggunaan">Penggunaan</label>
-                        <input type="text" class="form-control" name="penggunaan" aria-describedby="penggunaanServer">
+                        <input type="text" class="form-control" name="penggunaan" aria-describedby="penggunaanServer" id="penggunaan">
                     </div>
 
             </div>
