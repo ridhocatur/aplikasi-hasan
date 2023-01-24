@@ -10,7 +10,8 @@ class DataServer extends Controller
     public function index()
     {
         //get posts
-        $server = Server_m::latest()->paginate(5);
+        // $server = Server_m::latest()->paginate(5);
+        $server = Server_m::orderBy('id', 'DESC')->paginate();
 
         //render view with posts
         return view('data-server.index',['title' => 'Data Server'], compact('server'));
@@ -18,32 +19,11 @@ class DataServer extends Controller
 
     public function create()
     {
-        //
+        // KOSONG
     }
 
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'merk_server'   => 'required',
-        //     'jenis'         => 'required',
-        //     'hardisk'       => 'required',
-        //     'ram'           => 'required',
-        //     'processor'     => 'required',
-        //     'os'            => 'required|numeric|min:4',
-        //     'tahun'         => 'required'
-        // ],[
-        //     'merk_server.required'   => 'Wajib Di Isi',
-        //     'jenis.required'         => 'Wajib Di Isi',
-        //     'hardisk.required'       => 'Wajib Di Isi',
-        //     'ram.required'           => 'Wajib Di Isi',
-        //     'processor.required'     => 'Wajib Di Isi',
-        //     'os.required'            => 'Wajib Di Isi',
-        //     'os.numeric'             => 'Hanya boleh diisi angka',
-        //     'os.min'                 => 'Minimal 4 Angka',
-        //     'tahun.required'         => 'Wajib Di Isi'
-        // ]);
-
-        //create post
         Server_m::create([
             'merk_server'   => $request->merkserver,
             'jenis'         => $request->jenis,
@@ -54,47 +34,74 @@ class DataServer extends Controller
             'tahun'         => $request->tahun,
             'penggunaan'    => $request->penggunaan
         ]);
-
-        //redirect to index
         return redirect()->route('data-server.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
-    public function show(PerangkatJar_m $perangkatJar_m)
+    public function show(Server_m $server_m)
     {
-        //
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data Post',
+            'data'    => $post
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @param  \App\Models\Server_m  $perangkatJar_m
      * @return \Illuminate\Http\Response
      */
-    public function edit(PerangkatJar_m $perangkatJar_m)
+    public function edit(Server_m $server_m)
     {
-        //
+        // KOSONG
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @param  \App\Models\server_m  $server_m
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerangkatJar_m $perangkatJar_m)
+    public function update(Request $request)
     {
-        //
+        // KOSONG
+    }
+
+    public function ubah(Request $request)
+    {
+        $update = Server_m::where('id', $request->id)->firstOrfail();
+        $update->merk_server   = $request->merkserver; //kiri database, kanan nama field
+        $update->jenis         = $request->jenis;
+        $update->processor     = $request->hardisk;
+        $update->ram           = $request->ram;
+        $update->hardisk       = $request->processor;
+        $update->os            = $request->os;
+        $update->tahun         = $request->tahun;
+        $update->penggunaan    = $request->penggunaan;
+        $update->save();
+        return redirect()->route('data-server.index')->with(['success' => 'Data Berhasil Diupdate!']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PerangkatJar_m  $perangkatJar_m
+     * @param  \App\Models\server_m  $server_m
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PerangkatJar_m $perangkatJar_m)
+    public function destroy(Server_m $server_m, Request $request)
     {
-        //
+        Server_m::where('id', $request->id)->delete();
+        return redirect()->route('data-server.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function getAPI()
+    {
+        $server = Server_m::orderBy('id', 'DESC')->get();
+
+        return response()->json($server, 200, ['pesan' => 'success'] );
+
     }
 }

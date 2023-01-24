@@ -14,5 +14,6 @@ class Server_m extends Model
      */
     protected $table = 'data_server';
 
-    protected $fillable = ['id, merk_server, jenis, hardisk, ram, processor, os, tahun, penggunaan'];
+    // protected $fillable = ['merk_server, jenis, hardisk, ram, processor, os, tahun, penggunaan'];
+    protected $guarded = [];
 }
