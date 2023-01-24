@@ -32,3 +32,6 @@ Route::resource('/data-perangkat-jaringan', PerangkatJar::class);
 Route::resource('/data-nvr-cctv', NvrCctv::class);
 Route::resource('/data-cctv-pemko', CctvPemko::class);
 Route::resource('/data-access-point', AccessPoint::class);
+
+Route::get('getServer', [DataServer::class, 'getAPI']);
+Route::post('ubahData', [DataServer::class, 'ubah'])->name('Ubah');
