@@ -43,9 +43,8 @@
                             <td class="text-center">
                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('data-server.destroy', $post->id) }}" method="POST">
                                     <input type="hidden" value="{{$post->id}}" name="id">
-                                    {{-- <a href="{{ route('data-server.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a> --}}
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="get_data()"><i class="fas fa-edit"></i></button>
+                                        <button type="button" href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="get_data({{ $post->id }})"><i class="fas fa-edit"></i></button>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -65,12 +64,12 @@
     </div>
     @push('js')
     <script>
-        function get_data() {
+        function get_data(id) {
 
             // JavaScript untuk ambil data buat Edit Data
-
+            
          $.ajax({
-            url: "http://tugas-hasan.test/getServer",
+            url: "/getServer/"+id,
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {

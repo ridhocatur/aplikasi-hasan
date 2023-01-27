@@ -97,9 +97,9 @@ class DataServer extends Controller
         return redirect()->route('data-server.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
-    public function getAPI()
+    public function getAPI($id)
     {
-        $server = Server_m::orderBy('id', 'DESC')->get();
+        $server = Server_m::where('id', $id)->get();
 
         return response()->json($server, 200, ['pesan' => 'success'] );
 
