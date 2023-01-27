@@ -28,10 +28,21 @@ Route::get('/dashboard', function () {
 
 //route resource
 Route::resource('/data-server', DataServer::class);
-Route::resource('/data-perangkat-jaringan', PerangkatJar::class);
-Route::resource('/data-nvr-cctv', NvrCctv::class);
-Route::resource('/data-cctv-pemko', CctvPemko::class);
-Route::resource('/data-access-point', AccessPoint::class);
-
-Route::get('getServer', [DataServer::class, 'getAPI']);
+Route::get('getServer/{id}', [DataServer::class, 'getAPI']);
 Route::post('ubahData', [DataServer::class, 'ubah'])->name('Ubah');
+
+Route::resource('/data-perangkat-jaringan', PerangkatJar::class);
+Route::get('getJar/{id}', [PerangkatJar::class, 'getAPI']);
+Route::post('ubahJar', [PerangkatJar::class, 'ubah'])->name('UbahJar');
+
+Route::resource('/data-nvr-cctv', NvrCctv::class);
+Route::get('getNvr/{id}', [NvrCctv::class, 'getAPI']);
+Route::post('ubahNvr', [NvrCctv::class, 'ubah'])->name('UbahNvr');
+
+Route::resource('/data-cctv-pemko', CctvPemko::class);
+Route::get('getCctv/{id}', [CctvPemko::class, 'getAPI']);
+Route::post('ubahCctv', [CctvPemko::class, 'ubah'])->name('UbahCctv');
+
+Route::resource('/data-access-point', AccessPoint::class);
+Route::get('getAp/{id}', [AccessPoint::class, 'getAPI']);
+Route::post('ubahAp', [AccessPoint::class, 'ubah'])->name('UbahAp');
