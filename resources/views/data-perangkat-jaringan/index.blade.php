@@ -29,17 +29,20 @@
                     @forelse ($jaringan as $post)
                         <tr>
                             <td>1</td>
-                            <td>{{ $post->merk_server }}</td>
-                            <td>{{ $post->jenis }}</td>
-                            <td>{{ $post->hardisk }}</td>
+                            <td>{{ $post->merk_perangkat }}</td>
+                            <td>{{ $post->cpu }}</td>
                             <td>{{ $post->ram }}</td>
-                            <td>{{ $post->processor }}</td>
+                            <td>{{ $post->lan_port }}</td>
+                            <td>{{ $post->tahun }}</td>
                             <td class="text-center">
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('data-server.destroy', $post->id) }}" method="POST">
-                                    <a href="{{ route('data-server.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('data-perangkat-jaringan.destroy', $post->id) }}" method="POST">
+                                    <input type="hidden" value="{{$post->id}}" name="id">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModal" onclick="get_data({{ $post->id }})"><i class="fas fa-edit"></i></button>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </div>
                                 </form>
                             </td>
                         </tr>
@@ -55,16 +58,22 @@
     </div>
     @push('js')
     <script>
-        function get_data() {
+        function get_data(id) {
 
             // JavaScript untuk ambil data buat Edit Data
             $.ajax({
-                url: "http://tugas-hasan.test/getServer",
+                url: "/getJar/"+id,
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {
+                    console.log(res);
                     for (const iterator of res) {
                         $('#id').val(`${iterator.id}`)
+                        $('#merkperangkat').val(`${iterator.merk_perangkat}`)
+                        $('#cpu').val(`${iterator.cpu}`)
+                        $('#ram').val(`${iterator.ram}`)
+                        $('#lanport').val(`${iterator.lan_port}`)
+                        $('#tahun').val(`${iterator.tahun}`)
                     }
                 }
             });
@@ -72,6 +81,6 @@
         }
     </script>
     @endpush
-    {{-- @include('data-perangkat-jaringan.insert') --}}
-    {{-- @include('data-perangkat-jaringan.edit') --}}
+    @include('data-perangkat-jaringan.insert')
+    @include('data-perangkat-jaringan.edit')
 @endsection
