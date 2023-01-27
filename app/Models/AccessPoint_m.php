@@ -14,5 +14,7 @@ class AccessPoint_m extends Model
      */
     protected $table = 'access_point';
 
-    protected $fillable = ['id, merk_ap, tipe, nama_ap, letak, tahun'];
+    // protected $fillable = ['id, merk_ap, tipe, nama_ap, letak, tahun'];
+    protected $guarded = [];
+
 }

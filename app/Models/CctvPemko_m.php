@@ -14,5 +14,7 @@ class CctvPemko_m extends Model
      */
     protected $table = 'cctv_pemko';
 
-    protected $fillable = ['id, merk_cctv, tipe, letak, tahun'];
+    // protected $fillable = ['id, merk_cctv, tipe, letak, tahun'];
+    protected $guarded = [];
+
 }

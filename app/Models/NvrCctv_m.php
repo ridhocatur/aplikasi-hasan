@@ -14,5 +14,7 @@ class NvrCctv_m extends Model
      */
     protected $table = 'nvr_cctv';
 
-    protected $fillable = ['id, merk_nvr, video_ch, hardisk, penggunaan, tahun'];
+    // protected $fillable = ['id, merk_nvr, video_ch, hardisk, penggunaan, tahun'];
+    protected $guarded = [];
+
 }

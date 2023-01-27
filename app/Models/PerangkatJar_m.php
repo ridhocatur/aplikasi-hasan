@@ -14,5 +14,7 @@ class PerangkatJar_m extends Model
      */
     protected $table = 'perangkat_jaringan';
 
-    protected $fillable = ['id, merk_perangkat, cpu, ram, lan_port, tahun'];
+    // protected $fillable = ['id, merk_perangkat, cpu, ram, lan_port, tahun'];
+    protected $guarded = [];
+
 }
